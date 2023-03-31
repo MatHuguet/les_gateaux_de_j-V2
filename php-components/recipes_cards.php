@@ -1,9 +1,19 @@
+<?php
+require_once './php_script/db_conn.php';
+
+$sql = 'SELECT * FROM recipes WHERE recipe_id = 1';
+$q = $dbco->query($sql);
+$recipe = $q->fetch();
+echo '<pre>';
+var_dump($recipe);
+echo "</pre>";
+
+?>
+
+
 <content class="cards">
-    <div class="card c1"></div>
-    <div class="card c2"></div>
-    <div class="card c3"></div>
-    <div class="card c4"></div>
-    <div class="card c5"></div>
-    <div class="card c6"></div>
-    <div class="card c7"></div>
+    <div class="card c1">
+        <p><?= $recipe["desc_short"] ?></p>
+    </div>
+
 </content>

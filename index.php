@@ -1,6 +1,8 @@
 <?php
 
+
 $title = "Accueil";
+
 
 include './php-components/header.php';
 
