@@ -191,6 +191,14 @@ ul > li {
   opacity: 0.6;
 }
 
+.upload-form form {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 @media screen and (min-width: 760px) {
   .nav-container {
     position: sticky;
