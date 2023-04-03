@@ -1,5 +1,5 @@
 <?php
-
+require('php_script/db_conn.php');
 
 $title = "Accueil";
 

@@ -247,10 +247,13 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 2rem 0;
+  background-color: #143d44;
 }
+
 
 .connect-form div {
   margin: 1rem 0;
+  display: flex;
 }
 
 h1 {
