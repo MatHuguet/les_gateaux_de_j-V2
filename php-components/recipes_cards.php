@@ -14,6 +14,8 @@ echo "</pre>";
 <content class="cards">
     <div class="card c1">
         <p><?= $recipe["desc_short"] ?></p>
+        <?=  header("Content-type: image/jpg"); 
+        $recipe["images"]; ?>
     </div>
 
 </content>
