@@ -6,7 +6,7 @@
                 <li>Contact</li>
                 <li>A propos</li>
                 <li>Règlement</li>
-                <li><a href="user_img-upload.php">Admin</a></li>
+                <li><a href="connect.php">Admin</a></li>
             </ul>
         </div>
     </div>

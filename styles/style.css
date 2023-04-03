@@ -218,4 +218,18 @@ ul > li {
   .hamburger {
     display: none;
   }
+}
+.admin-accueil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.connect-form div {
+  margin: 1rem 0;
+}
+
+h1 {
+  margin: 1rem 0;
 }/*# sourceMappingURL=style.css.map */
