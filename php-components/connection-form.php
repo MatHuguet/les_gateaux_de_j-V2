@@ -22,7 +22,7 @@
         </div>
         <div class='submit'>
             <label for='submit'> Se connecter :
-                <input type='submit' id='submit' value='Valider'>
+                <input type='submit' id='submit' value='Valider' name='submit'>
             </label>
         </div>
 </div>
