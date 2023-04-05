@@ -6,7 +6,16 @@
                 <li>Contact</li>
                 <li>A propos</li>
                 <li>Règlement</li>
-                <li><a href="connect.php">Admin</a></li>
+                <?php 
+                    // if ($_SESSION['administration'] === 'JulieS') {
+                    //     echo "
+
+                    // } else {
+                        echo "<li><a href='connect.php'>Admin</a></li>";
+                    // }
+                ?>
+
+
             </ul>
         </div>
     </div>

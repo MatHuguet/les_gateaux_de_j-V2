@@ -18,6 +18,7 @@
 
     <?php
 session_unset();
+session_start();
 //DSN
 require_once('../const/const.php');
 $dsn = "mysql:dbname=".DB_NAME.";host=".DB_HOST;
@@ -81,10 +82,15 @@ $q = $dbco->query($sql);
                 echo "Nom d'utilisateur et/ou mot de passe incorrects";
             } else {
                 echo "ça marche comme ça";
-                session_start();
+                
+                $_SESSION['administration'] = [
+                    'admin' => $admin,
+                ]; 
                 echo "<pre>";
                 var_dump($_SESSION);
                 echo "</pre>";
+                echo getcwd();
+                // header('Location:../index.php');
             }
             
             // echo $admin['password'];
