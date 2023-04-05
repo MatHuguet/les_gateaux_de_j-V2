@@ -1,4 +1,23 @@
-<?php 
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title><?= $title ?></title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <img class="head-img" src="../img/logoJ_1.webp" alt="Les gâteaux de Julie">
+        </div>
+    </header>
+
+    <?php
+session_unset();
 //DSN
 require_once('../const/const.php');
 $dsn = "mysql:dbname=".DB_NAME.";host=".DB_HOST;
@@ -14,13 +33,25 @@ die("Erreur : ".$e->getMessage());
 }
 //Création de la table si elle n'existe pas :
 
-$sql = "CREATE TABLE IF NOT EXISTS administration (admin VARCHAR(100), password VARCHAR(100)" ;
+$sql = "CREATE TABLE IF NOT EXISTS administration(
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    admin VARCHAR(100), 
+    password VARCHAR(100)
+    )" ;
+
+
 $q = $dbco->query($sql);
-$sql = "INSERT INTO `administration` (`admin`, `password`) VALUES (`:adminName`, `:adminPass`)";
+$sql = "INSERT INTO administration(
+    admin, 
+    password) 
+    VALUES (:adminName, :adminPass)";
 $q = $dbco->prepare($sql);
 $q->bindValue(':adminName', 'JulieS', PDO::PARAM_STR);
 $q->bindValue(':adminPass', 'mamour', PDO::PARAM_STR);
 $q->execute();
+
+$sql = "DELETE FROM administration WHERE `Id` > 1";
+$q = $dbco->query($sql);
 
 //======================================================================
 //On récupère l'username:
@@ -38,25 +69,22 @@ $q->execute();
             $admin_request->bindValue(":admin", $_POST["username"], PDO::PARAM_STR);
             $admin_request->execute();
             $admin = $admin_request->fetch();
-            echo "<pre>";
-            var_dump($admin);
-            echo "</pre>";
-            echo $admin['password'];
-            echo $_POST['password'];
+            
+
             //Si l'utilisateur n'existe pas:
             if(!$admin) {
               die("Utilisateur non trouvé");  
             }
             //Si l'utilisateur existe, on peut vérifier le mot de passe :
-            echo "<pre>";
-            var_dump($_POST);
-            echo "</pre>";
-            var_dump($admin['password']);
-            echo "<pre>";
-            var_dump(password_verify($_POST['password'], $admin['password']));
-            echo "</pre>";
-            if($_POST['password'] === $admin['password']){
+
+            if($_POST['password'] !== $admin['password']){
+                echo "Nom d'utilisateur et/ou mot de passe incorrects";
+            } else {
                 echo "ça marche comme ça";
+                session_start();
+                echo "<pre>";
+                var_dump($_SESSION);
+                echo "</pre>";
             }
             
             // echo $admin['password'];
@@ -106,5 +134,5 @@ $q->execute();
     // //Vérification du mot de passe
     // $sql = "SELECT password FROM administration WHERE admin = $admin";
 
-    
+    include_once('../php-components/footer.php');
 ?>
