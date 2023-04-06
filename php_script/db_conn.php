@@ -9,7 +9,6 @@ $dbco->exec("SET NAMES utf8"); //ajuste les valeurs en UTF8 pour une meilleur é
 //définir le mode de lecture fetch() des données :
 $dbco->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); //le mode de fetch par défaut est
 //défini sur "associatif"
-echo "connexion réussie !";
 
 } catch(PDOException $e){
 die("Erreur : ".$e->getMessage());

@@ -1,14 +1,10 @@
 <?php
-session_start();
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
-echo "<pre>";
-var_dump($_SESSION['administration']);
-echo "</pre>";
+if (isset($_SESSION['admin'])) {
+    if ($_SESSION['admin'] === 'JulieS') {
+        echo '<h2>Bienvenue! Connecté en tant que '. $_SESSION['admin'].'</h2><br>';
+        include('./php-components/admin-main-menu.php');
+    }
 
-if ($_SESSION['administration'] === 'JulieS') {
-    echo 'Connecté en tant que administrateur';
 } else {
-    echo 'pas connecté';
+    echo '<h2>Bienvenue !</h2>';
 }

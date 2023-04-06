@@ -11,9 +11,8 @@ include './php-components/header.php';
 
 include './php-components/navbar.php';
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
+include './php_script/admin-verify.php';
+
 
 include './php-components/footer.php';
 
