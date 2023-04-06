@@ -7,12 +7,17 @@
                 <li>A propos</li>
                 <li>Règlement</li>
                 <?php 
-                    // if ($_SESSION['administration'] === 'JulieS') {
-                    //     echo "
+                    if(isset($_SESSION['admin'])){
+                        if ($_SESSION['admin'] === 'JulieS') {
+                        echo "<li><a href='php_script/disconnect.php'>Déconnexion</a></li>";
+                    }
+                } else {
+                    echo "<li><a href='connect.php'>Admin</a></li>";
+                }
+                        
+                        
 
-                    // } else {
-                        echo "<li><a href='connect.php'>Admin</a></li>";
-                    // }
+                    
                 ?>
 
 

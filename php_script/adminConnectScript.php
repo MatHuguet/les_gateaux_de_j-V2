@@ -17,8 +17,7 @@
     </header>
 
     <?php
-session_unset();
-session_start();
+
 //DSN
 require_once('../const/const.php');
 $dsn = "mysql:dbname=".DB_NAME.";host=".DB_HOST;
@@ -63,7 +62,8 @@ $q = $dbco->query($sql);
                 die( "Merci de remplir les champs pour vous connecter");
             }
             if(empty($_POST['password'])){
-                die("Merci de remplir les champs pour vous connecter");
+                echo "Merci de remplir les champs pour vous connecter";
+                echo "<p>Revenir à la page de <a href='index.php'>connexion</a></p>";
             }
             $admin_sql = "SELECT * FROM `administration` WHERE `admin` = :admin";
             $admin_request = $dbco->prepare($admin_sql);
@@ -74,71 +74,24 @@ $q = $dbco->query($sql);
 
             //Si l'utilisateur n'existe pas:
             if(!$admin) {
-              die("Utilisateur non trouvé");  
+              echo "Utilisateur non trouvé"; 
+              echo "<p>Revenir à la page de <a href='../connect.php'>connexion</a></p>";
             }
             //Si l'utilisateur existe, on peut vérifier le mot de passe :
 
             if($_POST['password'] !== $admin['password']){
                 echo "Nom d'utilisateur et/ou mot de passe incorrects";
+                echo "<p>Revenir à la page de <a href='../connect.php'>connexion</a></p>";
+                die();
             } else {
+                session_start();
                 echo "ça marche comme ça";
                 
-                $_SESSION['administration'] = [
-                    'admin' => $admin,
-                ]; 
-                echo "<pre>";
-                var_dump($_SESSION);
-                echo "</pre>";
-                echo getcwd();
-                // header('Location:../index.php');
+                $_SESSION['admin'] = $admin['admin']; 
+                header('Location:../index.php');
             }
-            
-            // echo $admin['password'];
-            // $admin_request->bindValue(":admin", "$useradmin");
-            // $admin_request->execute();
-            
-            // if(!$admin){
-            //     echo "L'utilisateur et/ou le mot de passe sont incorrects";
-            // }
-
-            // $userpass = strip_tags($_POST['password']);
-            // $pass_sql = ('SELECT password FROM administration WHERE admin = $admin');
-            // $pass_request = $dbco->query($pass_sql);
-            // $pass_request->fetch();
-            // print_r($pass_request);
-
-
-
-
-
-
-
-
-
-
         }
 
-    // if (!isset($_POST['username']) && empty($_POST['username']
-    // ))
-    // {
-    //     die('Erreur : merci de remplir les identifiants');
-    // }
-    // $sql = "SELECT admin FROM administration WHERE admin = :useradmin";
-    // $query = $dbco->prepare($sql);
-    // $query->bindValue(":useradmin", $_POST['username'], PDO::PARAM_STR);
-    // $query->execute();
-    // $useradmin = $query->fetch();
-    
-    // if (!$useradmin){
-    //     echo "Erreur : l'utilisateur et/ou le mot de passe sont incorrects";
-    // }
-
-    // if ($_POST['username'] === $useradmin['admin']){
-    //     $admin = $useradmin['admin'];
-    //     echo "Bienvenue '.$admin.'";
-    // }
-    // //Vérification du mot de passe
-    // $sql = "SELECT password FROM administration WHERE admin = $admin";
 
     include_once('../php-components/footer.php');
 ?>
