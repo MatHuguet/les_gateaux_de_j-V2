@@ -152,6 +152,7 @@ p {
 .foot-img img {
   width: 5rem;
   color: white;
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(315deg) brightness(112%) contrast(101%);
 }
 
 ul > li {
@@ -225,6 +226,12 @@ ul > li {
   align-items: center;
   padding: 2rem 0;
   background-color: #143d44;
+}
+
+.connected-as {
+  position: absolute;
+  top: 0;
+  left: 1rem;
 }
 
 .connect-form div {

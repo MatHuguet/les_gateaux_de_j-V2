@@ -1,6 +1,6 @@
 <footer>
     <div class="footer-container">
-        <div class="foot-img"><img src="./img/logoJ_bBgr-noBord.webp" alt="logo J"></div>
+        <div class="foot-img"><img src="./img/logoJ_v2.svg" alt="logo J"></div>
         <div class="footer-list">
             <ul>
                 <li>Contact</li>

@@ -15,6 +15,6 @@ session_start();
 <body>
     <header>
         <div class="header">
-            <img class="head-img" src="./img/logoJ_1.webp" alt="Les gâteaux de Julie">
+            <img class="head-img" src="./img/logoJ_v2.svg" alt="Les gâteaux de Julie">
         </div>
     </header>
